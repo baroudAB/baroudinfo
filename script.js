@@ -28,7 +28,7 @@ const categoriesTreeData = [
 // بيانات احتياطية
 // ---------------------------------------------------------------
 let productsDB = [
-  {id:1,  name:"Samsung Galaxy S24 Ultra",    brand:"Samsung",  price:125000,category:"android-phones",       specs:"12GB/512GB · 6.8\" 120Hz",       isNew:true },
+  {id:1,  name:"Samsung Galaxy S24 Ultra",    brand:"Samsung",  price:125000,category:"android-phones",       specs:"12GB/512GB · 6.8\" 120Hz",        image:"https://drive.google.com/file/d/1syBLY1_fZUbaSbxzyhutNlJVLpTkmyCq/view?usp=sharing",       isNew:true },
   {id:2,  name:"Google Pixel 8 Pro",          brand:"Google",   price:89000, category:"android-phones",       specs:"12GB/256GB · Android 14",        isNew:false},
   {id:3,  name:"iPhone 15 Pro Max",           brand:"Apple",    price:159000,category:"iphone",               specs:"8GB/512GB · A17 Pro",            isNew:true },
   {id:4,  name:"iPhone 14",                   brand:"Apple",    price:98000, category:"iphone",               specs:"6GB/128GB · A15 Bionic",         isNew:false},
