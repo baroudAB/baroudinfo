@@ -4,7 +4,7 @@
 
 // ✅ FIX: رقم واتساب — يُفضَّل جلبه من الشيت لاحقاً
 const WA_NUMBER     = '213555998895';
-const SHEET_API_URL = 'YOUR_APPS_SCRIPT_URL_HERE';
+const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbyURLcGaCaDl1mcGFx2YjWxjqvJH3xP2sZ1eTzWRC3nLsa9Ukg02qySaFn8WPILcLm-/exec';
 
 // ---------------------------------------------------------------
 // هيكل التصنيفات
