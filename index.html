@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Baroud Store | كتالوج الهواتف وقطع الحاسوب</title>
+
+  <!-- ✅ SEO Meta Tags -->
+  <meta name="description" content="Baroud Store — أفضل متجر لبيع الهواتف، اللاب توب، قطع الحاسوب والإكسسوارات في الجزائر. ضمان 3 أشهر، توصيل سريع، دفع عند الاستلام.">
+  <meta name="keywords" content="متجر هواتف الجزائر, بيع لاب توب, قطع حاسوب, Baroud Store, iPhone الجزائر, Samsung الجزائر">
+  <meta name="author" content="Baroud Store">
+  <meta name="robots" content="index, follow">
+
+  <!-- ✅ Open Graph (WhatsApp / Facebook preview) -->
+  <meta property="og:title" content="Baroud Store | هواتف، لاب توب، قطع حاسوب">
+  <meta property="og:description" content="أحدث الهواتف، أقوى الحواسيب وكل ما تحتاجه من إلكترونيات. ضمان 3 أشهر · توصيل سريع · دفع عند الاستلام.">
+  <meta property="og:image" content="logo.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_DZ">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ✅ WhatsApp Float Button -->
+  <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" title="تواصل معنا">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="logo-area">
+      <img src="logo.jpg" alt="Baroud Store" onerror="this.src='https://placehold.co/40x40?text=BS'">
+      <span>Baroud<span>Store</span></span>
+    </div>
+    <div class="top-actions">
+      <button id="darkModeToggle" class="icon-btn" title="تبديل الوضع"><i class="fas fa-moon"></i></button>
+      <!-- ✅ 3-language cycle: AR → FR → EN → AR -->
+      <button id="langToggle" class="lang-btn">🇫🇷 FR</button>
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="main-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header"><i class="fas fa-bars"></i> <span data-i18n="categories">التصنيفات</span></div>
+      <div id="categoriesTree" class="categories-tree">
+        <div class="all-products-btn" id="allProductsBtn">
+          <i class="fas fa-th-large"></i> <span data-i18n="all_products">جميع المنتجات</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <!-- Hero -->
+      <div class="hero-welcome">
+        <h1>Baroud<span>Store</span></h1>
+        <p data-i18n="hero_desc">أحدث الهواتف، أقوى الحواسيب، وكل ما تحتاجه من إلكترونيات في مكان واحد.</p>
+        <div class="trust-row">
+          <span><i class="fas fa-check-circle"></i> <span data-i18n="trust1">ضمان 3 أشهر</span></span>
+          <span><i class="fas fa-truck"></i> <span data-i18n="trust2">توصيل سريع</span></span>
+          <span><i class="fas fa-hand-holding-usd"></i> <span data-i18n="trust3">الدفع عند الاستلام</span></span>
+        </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-bar-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchInput" class="search-input" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن منتج، براند...">
+        <button id="clearSearch" class="clear-search" style="display:none;"><i class="fas fa-times"></i></button>
+      </div>
+
+      <!-- Sort Controls -->
+      <div class="sort-bar">
+        <span data-i18n="sort_by">ترتيب حسب:</span>
+        <button class="sort-btn active" data-sort="default" data-i18n="sort_default">الافتراضي</button>
+        <button class="sort-btn" data-sort="price-asc" data-i18n="sort_asc">السعر ↑</button>
+        <button class="sort-btn" data-sort="price-desc" data-i18n="sort_desc">السعر ↓</button>
+      </div>
+
+      <!-- New Arrivals Section -->
+      <section class="new-arrivals" id="newArrivalsSection">
+        <div class="section-head">
+          <h2><i class="fas fa-star"></i> <span data-i18n="new_arrivals">أحدث السلع</span></h2>
+          <span id="newCount" class="badge"></span>
+        </div>
+        <!-- ✅ Skeleton loader for new arrivals -->
+        <div id="newProductsGrid" class="products-grid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </section>
+
+      <!-- All Products Section -->
+      <section class="products-section">
+        <div class="section-head">
+          <h2 id="activeCategoryName" data-i18n="all_products">جميع المنتجات</h2>
+          <span id="productsCount" class="badge"></span>
+        </div>
+        <!-- ✅ Skeleton loader for products -->
+        <div id="productsGrid" class="products-grid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+      <div class="modal-slider">
+        <div class="slider-track" id="sliderTrack"></div>
+        <button class="slider-btn prev" id="sliderPrev"><i class="fas fa-chevron-right"></i></button>
+        <button class="slider-btn next" id="sliderNext"><i class="fas fa-chevron-left"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-brand" id="modalBrand"></div>
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-desc" id="modalDesc"></div>
+        <div id="modalSpecs" class="modal-specs"></div>
+        <div class="modal-footer">
+          <div class="modal-price" id="modalPrice"></div>
+          <div class="modal-actions">
+            <!-- ✅ Share button -->
+            <button class="btn-share" id="modalShare"><i class="fas fa-share-alt"></i></button>
+            <button class="btn-wa" id="modalWa"><i class="fab fa-whatsapp"></i> <span data-i18n="order_btn">طلب عبر واتساب</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose"><i class="fas fa-times"></i></button>
+    <button class="lb-nav prev" id="lbPrev"><i class="fas fa-chevron-right"></i></button>
+    <button class="lb-nav next" id="lbNext"><i class="fas fa-chevron-left"></i></button>
+    <img id="lbImg" alt="">
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+
+  <footer>
+    <p data-i18n="footer_text">© 2026 Baroud Store - جميع الحقوق محفوظة. بيع الهواتف وقطع الحاسوب في الجزائر.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
